@@ -1,0 +1,95 @@
+
+.floating_btn {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    cursor: pointer;
+  }
+  
+  .menu-popup {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  
+  .title {
+    padding: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close {
+    fill: white;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(0,0,0,.36);
+    cursor: pointer;
+  }
+
+  .close svg {
+    width: 16px;
+    height: 16px;
+    padding: 8px;
+  }
+
+  .form-container {
+    max-width: 520px;
+    border-radius: 5px;
+    background: linear-gradient(to right, rgb(0, 107, 230), rgb(2, 96, 221), rgb(5, 85, 212), rgb(7, 73, 203), rgb(9, 62, 194));
+    color: white;
+    box-shadow: 0 22px 110px rgba(180,191,208,.56);
+  }
+  
+  .card {
+    margin: 10px;
+    color : black;
+    width: 120px;
+    height: 114px;
+    cursor: pointer;
+    background: #fff;
+    border-radius: 12px;
+    border: 2px solid #fff;
+    padding: 5px 10px;
+    transition: border-color .15s ease;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card svg {
+    margin-bottom: 10px;
+  }
+
+  .checkmark {
+    position: relative;
+    right: -50px;
+    top: -10px;
+    fill: rgb(0, 107, 230);
+    margin: 0;
+    visibility: hidden;;
+  }
+
+  .card:hover {
+    border: 2px solid rgb(0, 107, 230);
+  }
+  
+  .content {
+    display : flex;
+    flex-direction: row;
+    flex-wrap : wrap;
+    justify-content: space-between;
+    background: #eff1f5;
+    border-radius: 16px 16px 0 0;
+    padding: 12px;
+  }
+
+  .highLight-links {
+    transition: all 0.3s ease 0s;
+    text-decoration: underline !important;
+    color: rgb(255, 255, 0) !important;
+    background-color: rgb(0, 0, 0) !important;
+  }
