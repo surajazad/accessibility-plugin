@@ -93,3 +93,11 @@
     color: rgb(255, 255, 0) !important;
     background-color: rgb(0, 0, 0) !important;
   }
+
+  .dyslexia-support {
+    font-family: 'Comic Sans MS';
+  }
+
+  p.dyslexia-support, div.dyslexia-support, span.dyslexia-support {
+    font-size: 1.05em;
+  }
