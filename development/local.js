@@ -82,14 +82,14 @@ document.addEventListener('DOMContentLoaded', () => {
       menuEl[0].style.display = "inline";
    });
 
-   // click of x button
+   // click of Close x button
    const closeEl = document.getElementsByClassName("close");
    closeEl[0].addEventListener('click', function (evt) {
        let menuEl = document.getElementsByClassName("menu-popup");
        menuEl[0].style.display = "none";
     });
 
-    //   click of text-zoom
+   // click of text-zoom
    const textZoom = document.getElementsByClassName("text-zoom");
    const checkmark = document.getElementsByClassName('checkmark');
    let counter = 0;
@@ -98,14 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if(counter > 4) {
        document.body.style.fontSize = "";
        checkmark[0].style.visibility = 'hidden';
-       textZoom[0].style.border = '2px solid #fff';
+       textZoom[0].style.border = '2px solid rgb(255, 255, 255)';
        counter = 0;
     } else if (document.body.style.fontSize == "") {
       document.body.style.fontSize = "1.0em";
       checkmark[0].style.visibility = 'visible';
       textZoom[0].style.border = '2px solid rgb(0, 107, 230)';
     }
-       document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (val * 0.2) + "em";
+       document.body.style.fontSize = parseFloat(document.body.style.fontSize) + (multiplier * 0.2) + "em";
     }
    textZoom[0].addEventListener('click', function () {
        resizeText(1);
@@ -117,8 +117,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const element = document.querySelectorAll('a');
           element.forEach(function(el) {
           if (el.classList.contains('highLight-links')) {
+            linkHighLight[0].style.border = '2px solid rgb(255, 255, 255)';
              el.classList.remove('highLight-links');
           } else {
+            linkHighLight[0].style.border = '2px solid rgb(0, 107, 230)';
              el.classList.add('highLight-links');
           }
        });
@@ -131,7 +133,9 @@ document.addEventListener('DOMContentLoaded', () => {
           element.forEach(function(el) {
           if (el.style.visibility == 'hidden') {
              el.style.visibility = 'visible';
+             hideImage[0].style.border = '2px solid rgb(255, 255, 255)';
           } else {
+            hideImage[0].style.border = '2px solid rgb(0, 107, 230)';
              el.style.visibility = 'hidden';
           }
        });
@@ -139,54 +143,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
      // click of text-spacing
      const letterSpacing = document.getElementsByClassName("letter-spacing");
-     let textSpacing = .00;
-     let wordSpacing = .00;
-     let spacingCounter = 0;
-     letterSpacing[0].addEventListener('click', function () {
-       spacingCounter = spacingCounter + 1;
-        const element = document.querySelectorAll('h1, h2, h3, h4, h5, h6, span, p, div, button, a');
-        if(spacingCounter > 3) {
-          textSpacing = .00;
-          wordSpacing = .00;
-          spacingCounter = 0; 
-       } else {
-          textSpacing = textSpacing + .12;
-          wordSpacing = wordSpacing + .16;
-        }
-        element.forEach(function(el) {
-          el.style.letterSpacing = `${textSpacing}em`;
-          el.style.wordSpacing = `${wordSpacing}em`;
-     });
-    });
+         let textSpacing = .00;
+         let wordSpacing = .00;
+         let spacingCounter = 0;
+         letterSpacing[0].addEventListener('click', function () {
+            spacingCounter = spacingCounter + 1;
+            const element = document.querySelectorAll('h1, h2, h3, h4, h5, h6, span, p, div, button, a');
+            if(spacingCounter > 3) {
+               textSpacing = .00;
+               wordSpacing = .00;
+               spacingCounter = 0; 
+               letterSpacing[0].style.border = '2px solid rgb(255, 255, 255)';
+            } else {
+               textSpacing = textSpacing + .12;
+               wordSpacing = wordSpacing + .16;
+               letterSpacing[0].style.border = '2px solid rgb(0, 107, 230)';
+            }
+            element.forEach(function(el) {
+               el.style.letterSpacing = `${textSpacing}em`;
+               el.style.wordSpacing = `${wordSpacing}em`;
+         });
+      });
 
      // click of text-align
      const textAlign = document.getElementsByClassName("text-align");
-     let alignCounter = 0;
-     let textAlignment;
-     textAlign[0].addEventListener('click', function () {
-       alignCounter = alignCounter + 1;
-        const element = document.querySelectorAll('h1, h2, h3, h4, h5, h6, span, p, div, button, a');
-        switch(alignCounter) {
-          case 1:
-             textAlignment = 'left';
-             break;
-          case 2:
-             textAlignment = 'right';
-             break;
-          case 3:
-             textAlignment = 'center';
-             break;
-          case 4:
-             textAlignment = 'justify';
-             alignCounter = 0;
-             break;
-          default:
-             textAlignment = 'center';
-        }
-        element.forEach(function(el) {
-          el.style.textAlign = textAlignment;
+      let alignCounter = 0;
+      let textAlignment;
+      textAlign[0].addEventListener('click', function () {
+         alignCounter = alignCounter + 1;
+         const element = document.querySelectorAll('h1, h2, h3, h4, h5, h6, span, p, div, button, a');
+         switch(alignCounter) {
+            case 1:
+               textAlignment = 'right';
+               textAlign[0].style.border = '2px solid rgb(0, 107, 230)';
+               break;
+            case 2:
+               textAlignment = 'left';
+               textAlign[0].style.border = '2px solid rgb(0, 107, 230)';
+               break;
+            case 3:
+               textAlignment = 'center';
+               textAlign[0].style.border = '2px solid rgb(0, 107, 230)';
+               break;
+            case 4:
+               textAlignment = 'justify';
+               textAlign[0].style.border = '2px solid rgb(255, 255, 255)';
+               alignCounter = 0;
+               break;
+            default:
+               textAlignment = 'center';
+         }
+         element.forEach(function(el) {
+            el.style.textAlign = textAlignment;
+         });
        });
-    });
 
     // click of pause-animation
    const pauseAnimation = document.getElementsByClassName("pause-animation");
@@ -195,18 +205,26 @@ document.addEventListener('DOMContentLoaded', () => {
        element.forEach(function(el) {
           if(el.paused) {
              el.play();
+             pauseAnimation[0].style.border = '2px solid rgb(255, 255, 255)';
           } else {
              el.pause();
+             pauseAnimation[0].style.border = '2px solid rgb(0, 107, 230)';
           }
        });
-    });
+   });
  
     // click of mute-sounds
    const muteSounds = document.getElementsByClassName("mute-sounds");
    muteSounds[0].addEventListener('click', function () {
        const videos = document.querySelectorAll('video');
        videos.forEach(function(video) {
-          video.muted = !video.muted;
+          if(video.muted) {
+            video.muted = false;
+            muteSounds[0].style.border = '2px solid rgb(255, 255, 255)';
+          } else {
+            video.muted = true;
+            muteSounds[0].style.border = '2px solid rgb(0, 107, 230)';
+          }
        });
     });
 
@@ -214,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
    // The letters are more rounded and spaced out, which can help make them easier to distinguish from each other.
    // Additionally, the font has a unique feature where the lowercase "b" and "d" letters are different in shape, making it easier for dyslexic readers to tell them apart.
 
-   // click of Dyslexia
+   // click of Dyslexia Font
    const dyslexia = document.getElementsByClassName("dyslexia");
    dyslexia[0].addEventListener('click', function () {
       const dyslexiaStylesApplied = document.getElementsByClassName("dyslexia-support").length > 0;
@@ -226,6 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
          textElements.forEach(elem => {
             elem.classList.remove('dyslexia-support'); 
          })
+         dyslexia[0].style.border = '2px solid rgb(255, 255, 255)';
          headers.forEach(headerElem => {
             const elemName = headerElem.nodeName.toLowerCase();
             const fontVal = initFontValues[elemName];
@@ -234,6 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
          textElements.forEach(elem => {
             elem.classList.add('dyslexia-support');
+            dyslexia[0].style.border = '2px solid rgb(0, 107, 230)';
             headers.forEach(headerElem => {
                const elemName = headerElem.nodeName.toLowerCase();
                const fontVal = initFontValues[elemName];
@@ -243,37 +263,96 @@ document.addEventListener('DOMContentLoaded', () => {
          })
       }
     });
+
+   // click of light-contrast <-------- Akash To add his logic here ----------->
+   // const lightContrast = document.getElementsByClassName("light-contrast");
+   // lightContrast[0].addEventListener('click', function (evt) {
+   //     console.log("light-contrast")
+   //  });
+
+   // click of light-contrast
+    const lightContrast = document.getElementsByClassName("light-contrast");
+    lightContrast[0].addEventListener('click', function () {
+     var element = document.getElementsByTagName("BODY")[0];
+     const lightContrastStylesApplied = document.getElementsByClassName("light-contrast-style").length > 0;
+      if(lightContrastStylesApplied) {
+         element.classList.remove('light-contrast-style');
+         lightContrast[0].style.border = '2px solid rgb(255, 255, 255)';
+      } else {
+         element.classList.remove('dark-contrast-style');
+         element.classList.add('light-contrast-style');
+         lightContrast[0].style.border = '2px solid rgb(0, 107, 230)';
+      }
+     });
+
+   // click of dark-contrast
+    const darkContrast = document.getElementsByClassName("dark-contrast");
+    darkContrast[0].addEventListener('click', function () {
+      var element = document.getElementsByTagName("BODY")[0];
+      const darkContrastStylesApplied = document.getElementsByClassName("dark-contrast-style").length > 0;
+      if(darkContrastStylesApplied) {
+         element.classList.remove('dark-contrast-style');
+         darkContrast[0].style.border = '2px solid rgb(255, 255, 255)';
+      } else {
+         element.classList.add('dark-contrast-style');
+         darkContrast[0].style.border = '2px solid rgb(0, 107, 230)';
+      }
+   });
+
+   // click of high-saturation
+    const highSaturation = document.getElementsByClassName("high-saturation");
+    highSaturation[0].addEventListener('click', function () {
+      var element = document.getElementsByTagName("BODY")[0];
+      const highSaturationStylesApplied = document.getElementsByClassName("high-saturation-style").length > 0;
+      if(highSaturationStylesApplied) {
+         element.classList.remove('high-saturation-style');
+         highSaturation[0].style.border = '2px solid rgb(255, 255, 255)';
+      } else {
+         element.classList.add('high-saturation-style');
+         highSaturation[0].style.border = '2px solid rgb(0, 107, 230)';
+      }
+   });
+
+   // click of low-saturation
+    const lowSaturation = document.getElementsByClassName("low-saturation");
+      lowSaturation[0].addEventListener('click', function () {
+      var element = document.getElementsByTagName("BODY")[0];
+      const lowSaturationStylesApplied = document.getElementsByClassName("low-saturation-style").length > 0;
+      if(lowSaturationStylesApplied) {
+         element.classList.remove('low-saturation-style');
+         lowSaturation[0].style.border = '2px solid rgb(255, 255, 255)';
+      } else {
+         element.classList.add('low-saturation-style');
+         lowSaturation[0].style.border = '2px solid rgb(0, 107, 230)';
+      }
+   });
+
+   // click of monochrome
+    const monochrome = document.getElementsByClassName("monochrome");
+    monochrome[0].addEventListener('click', function () {
+     var element = document.getElementsByTagName("BODY")[0];
+     const monochromeStylesApplied = document.getElementsByClassName("monochrome-style").length > 0;
+     if(monochromeStylesApplied) {
+         element.classList.remove('monochrome-style');
+         monochrome[0].style.border = '2px solid rgb(255, 255, 255)';
+     } else {
+         element.classList.add('monochrome-style');
+         monochrome[0].style.border = '2px solid rgb(0, 107, 230)';
+     }
+   });
  
 
    // click of large-cursor
-
- //   const largeCursor = document.getElementsByClassName("large-cursor");
- //   largeCursor[0].addEventListener('click', function (evt) {
- //       console.log("large-cursor")
- //    });
-
-   // click of zoom-lens
-
- //   const zoomLens = document.getElementsByClassName("zoom-lens");
- //   zoomLens[0].addEventListener('click', function (evt) {
- //       console.log("zoom-lens")
- //    });
-
-   
-
-   // click of light-contrast
-
- //   const lightContrast = document.getElementsByClassName("light-contrast");
- //   lightContrast[0].addEventListener('click', function (evt) {
- //       console.log("light-contrast")
- //    });
-
-   // click of dark-theme
-
- //   const darkTheme = document.getElementsByClassName("dark-theme");
- //   darkTheme[0].addEventListener('click', function (evt) {
- //       console.log("dark-theme")
- //    });
-
-   
+   const largeCursor = document.getElementsByClassName("large-cursor");
+   largeCursor[0].addEventListener('click', function (evt) {
+      var element = document.getElementsByTagName("BODY")[0];
+      const largeCursorStylesApplied = document.getElementsByClassName("large-cursor-style").length > 0;
+      if(largeCursorStylesApplied) {
+         element.classList.remove('large-cursor-style');
+         largeCursor[0].style.border = '2px solid rgb(255, 255, 255)';
+      } else {
+         element.classList.add('large-cursor-style');
+         largeCursor[0].style.border = '2px solid rgb(0, 107, 230)';
+      }
+   });
 });

@@ -101,3 +101,29 @@
   p.dyslexia-support, div.dyslexia-support, span.dyslexia-support {
     font-size: 1.05em;
   }
+
+  .light-contrast-style {
+    color: rgb(31, 37, 51) !important;
+    background: rgb(255, 255, 255) !important;
+  }
+
+  .dark-contrast-style {
+    color: rgb(255, 255, 255) !important;
+    background: rgb(24, 24, 24) !important;
+  }
+
+  .high-saturation-style {
+    filter: saturate(4);
+  }
+
+  .low-saturation-style {
+    filter: saturate(50%);
+  }
+
+  .monochrome-style {
+    filter: saturate(0);
+  }
+
+  .large-cursor-style {
+    cursor: url("http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur"), auto;
+  }
