@@ -84,6 +84,10 @@
     justify-content: space-between;
     background: #eff1f5;
     border-radius: 16px 16px 0 0;
+  }
+
+  .container {
+    background: #eff1f5;
     padding: 12px;
   }
 
@@ -126,4 +130,41 @@
 
   .large-cursor-style {
     cursor: url("http://wiki-devel.sugarlabs.org/images/e/e2/Arrow.cur"), auto;
+  }
+
+  .profile {
+    width: 100%;
+    color:rgb(0, 0, 0);
+  }
+
+  .action-btn {
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-flow: wrap;
+    text-align: left;
+    border: none;
+    -webkit-appearance: none;
+    font-size: 0.875rem;
+    padding: 0 0.8125rem 0 0.8125rem;
+    line-height: 1;
+    cursor: pointer;
+    position: relative;
+    transition: background-color .15s ease;
+    margin: 12px;
+  }
+
+  .icon-btn {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.75rem;
+  }
+
+  .profile-btn {
+    display: flex;
   }

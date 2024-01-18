@@ -71,6 +71,13 @@ document.addEventListener('DOMContentLoaded', () => {
       
       return initialValue;
    }
+
+   const increaseFontByPercent = (elem, percentage) => {
+      const elemName = elem.nodeName.toLowerCase();
+      const fontVal = initFontValues[elemName];
+      let percentValue = fontVal * percentage;
+      elem.style.fontSize = (fontVal + percentValue) + 'px';
+   }
  
    // Default values
    const initFontValues = initialFontValues();
@@ -112,18 +119,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // click of link-highlight
+
+    // Link Highlight
+    const highlightLinks = () => {
+      const element = document.querySelectorAll('a');
+         element.forEach(function(el) {
+            if (el.classList.contains('highLight-links')) {
+               linkHighLight[0].style.border = '2px solid rgb(255, 255, 255)';
+                el.classList.remove('highLight-links');
+             } else {
+               linkHighLight[0].style.border = '2px solid rgb(0, 107, 230)';
+                el.classList.add('highLight-links');
+             }
+       });
+    }
     const linkHighLight = document.getElementsByClassName("link-highlight");
        linkHighLight[0].addEventListener('click', function () {
-          const element = document.querySelectorAll('a');
-          element.forEach(function(el) {
-          if (el.classList.contains('highLight-links')) {
-            linkHighLight[0].style.border = '2px solid rgb(255, 255, 255)';
-             el.classList.remove('highLight-links');
-          } else {
-            linkHighLight[0].style.border = '2px solid rgb(0, 107, 230)';
-             el.classList.add('highLight-links');
-          }
-       });
+         highlightLinks();
     });
 
     // click of hide-image
@@ -198,10 +210,9 @@ document.addEventListener('DOMContentLoaded', () => {
          });
        });
 
-    // click of pause-animation
-   const pauseAnimation = document.getElementsByClassName("pause-animation");
-   pauseAnimation[0].addEventListener('click', function () {
-       const element = document.querySelectorAll('video');
+   // Pause Animation
+   const animationPause = () => {
+      const element = document.querySelectorAll('video');
        element.forEach(function(el) {
           if(el.paused) {
              el.play();
@@ -211,6 +222,11 @@ document.addEventListener('DOMContentLoaded', () => {
              pauseAnimation[0].style.border = '2px solid rgb(0, 107, 230)';
           }
        });
+   }
+    // click of pause-animation
+   const pauseAnimation = document.getElementsByClassName("pause-animation");
+   pauseAnimation[0].addEventListener('click', function () {
+      animationPause();
    });
  
     // click of mute-sounds
@@ -234,11 +250,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // click of Dyslexia Font
    const dyslexia = document.getElementsByClassName("dyslexia");
+   const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+   const text = document.querySelectorAll('span, p, div, button, a');
+   const textElements = [...headers, ...text];
+
    dyslexia[0].addEventListener('click', function () {
       const dyslexiaStylesApplied = document.getElementsByClassName("dyslexia-support").length > 0;
-      const headers = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-      const text = document.querySelectorAll('span, p, div, button, a');
-      const textElements = [...headers, ...text];
 
       if (dyslexiaStylesApplied) {
          textElements.forEach(elem => {
@@ -255,10 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elem.classList.add('dyslexia-support');
             dyslexia[0].style.border = '2px solid rgb(0, 107, 230)';
             headers.forEach(headerElem => {
-               const elemName = headerElem.nodeName.toLowerCase();
-               const fontVal = initFontValues[elemName];
-               let percentValue = fontVal * 0.20;
-               headerElem.style.fontSize = (fontVal + percentValue) + 'px';
+               increaseFontByPercent(headerElem, 0.20);
             })
          })
       }
@@ -299,9 +313,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
    });
 
-   // click of high-saturation
-    const highSaturation = document.getElementsByClassName("high-saturation");
-    highSaturation[0].addEventListener('click', function () {
+   // High Saturation
+   const highSat = () => {
       var element = document.getElementsByTagName("BODY")[0];
       const highSaturationStylesApplied = document.getElementsByClassName("high-saturation-style").length > 0;
       if(highSaturationStylesApplied) {
@@ -311,8 +324,13 @@ document.addEventListener('DOMContentLoaded', () => {
          element.classList.add('high-saturation-style');
          highSaturation[0].style.border = '2px solid rgb(0, 107, 230)';
       }
+   }
+   // click of high-saturation
+   const highSaturation = document.getElementsByClassName("high-saturation");
+      highSaturation[0].addEventListener('click', function () {
+      highSat();
    });
-
+ 
    // click of low-saturation
     const lowSaturation = document.getElementsByClassName("low-saturation");
       lowSaturation[0].addEventListener('click', function () {
@@ -342,9 +360,8 @@ document.addEventListener('DOMContentLoaded', () => {
    });
  
 
-   // click of large-cursor
-   const largeCursor = document.getElementsByClassName("large-cursor");
-   largeCursor[0].addEventListener('click', function (evt) {
+   // Cursor Enlarge
+   const cursorEnlarge = () => {
       var element = document.getElementsByTagName("BODY")[0];
       const largeCursorStylesApplied = document.getElementsByClassName("large-cursor-style").length > 0;
       if(largeCursorStylesApplied) {
@@ -354,5 +371,39 @@ document.addEventListener('DOMContentLoaded', () => {
          element.classList.add('large-cursor-style');
          largeCursor[0].style.border = '2px solid rgb(0, 107, 230)';
       }
+   }
+   // click of large-cursor
+   const largeCursor = document.getElementsByClassName("large-cursor");
+   largeCursor[0].addEventListener('click', function (evt) {
+      cursorEnlarge();
    });
+
+   const visuallyImpaired = document.getElementsByClassName('visually-impaired');
+   visuallyImpaired[0].addEventListener('click', () => {
+      const isVisuallyImpairedActive = document.querySelectorAll('.visually-impaired.active');
+      if (isVisuallyImpairedActive.length > 0) {
+         visuallyImpaired[0].style.border = '2px solid rgb(255, 255, 255)';
+         textZoom[0].style.border = '2px solid rgb(255, 255, 255)';
+         visuallyImpaired[0].classList.remove('active');
+         textElements.forEach(elem => {
+            const elemName = elem.nodeName.toLowerCase();
+            const fontVal = initFontValues[elemName];
+            elem.style.fontSize = fontVal + 'px';
+         })
+      } else {
+         visuallyImpaired[0].style.border = '2px solid rgb(0, 107, 230)';
+         textZoom[0].style.border = '2px solid rgb(0, 107, 230)';
+         visuallyImpaired[0].classList.add('active');
+         textElements.forEach(textElem => {
+            increaseFontByPercent(textElem, 0.10);
+         })
+      }
+      cursorEnlarge();
+      highSat();
+      animationPause();
+   });
+
+   // Reset settings
+   const reset = document.getElementById('reset');
+   reset?.addEventListener('click', () => window.location.reload());
 });
